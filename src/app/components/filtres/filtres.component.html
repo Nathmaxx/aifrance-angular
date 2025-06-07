@@ -1,21 +1,27 @@
-<!-- <div class="filtres-container">
-  <mat-form-field appearance="outline">
-    <mat-label>Aéroport</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let aeroport of aeroports" [value]="aeroport">{{ aeroport.ville + ' - ' + aeroport.nom }}</mat-option>
-    </mat-select>
-  </mat-form-field>
+<div class="flex gap-x-5">
+	<mat-form-field appearance="fill" class="w-[350px]">
+		<mat-label>Aéroports</mat-label>
+		<mat-select [(ngModel)]="selectedAirport">
+			<mat-option *ngFor="let aeroport of aeroports" [value]="aeroport">
+				{{ aeroport.ville + ' - ' + aeroport.nom }}
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Dates</mat-label>
-    <mat-date-range-input [rangePicker]="picker">
-      <input matStartDate placeholder="Date de début">
-      <input matEndDate placeholder="Date de fin">
-    </mat-date-range-input>
-    <mat-hint>Entrez une période de 3 jours</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
-  </mat-form-field>
+	<mat-form-field appearance="fill" class="w-[350px]">
+		<mat-label>Dates</mat-label>
+		<mat-date-range-input [rangePicker]="picker">
+			<input matStartDate placeholder="Date de début" [(ngModel)]="startDate">
+			<input matEndDate placeholder="Date de fin" [(ngModel)]="endDate">
+		</mat-date-range-input>
+		<mat-hint>Entrez une période de 3 jours</mat-hint>
+		<mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+		<mat-date-range-picker #picker></mat-date-range-picker>
+	</mat-form-field>
 
-  <button class="apply-button" mat-flat-button>Appliquer</button>
-</div> -->
+	<button class="bg-blue-900 hover:bg-blue-950 cursor-pointer transition text-white h-min py-2 px-3 rounded-md 
+		disabled:opacity-30 disabled:bg-gray-600 disabled:hover:bg-gray-600 disabled:cursor-not-allowed"
+		(click)="applyFilters()" [disabled]="isDisabled">
+		Appliquer
+	</button>
+</div>

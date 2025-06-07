@@ -1,4 +1,4 @@
-import { Component, LOCALE_ID, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, LOCALE_ID, Output, ViewEncapsulation } from '@angular/core';
 import { MAT_DATE_RANGE_SELECTION_STRATEGY } from '@angular/material/datepicker';
 import { AEROPORTS } from './../../constants/aeroport.constant';
 import { MatInputModule } from '@angular/material/input';
@@ -12,12 +12,14 @@ import { MatCommonModule } from '@angular/material/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
+import { IFilters } from '../../models/filters.model';
 
 
 @Component({
     selector: 'app-filtres',
     templateUrl: './filtres.component.html',
-    imports: [MatIconModule, MatButtonModule, MatInputModule,
+    imports: [MatIconModule, MatButtonModule, MatInputModule, FormsModule,
         MatFormFieldModule, MatSelectModule, MatDatepickerModule, MatCommonModule, CommonModule],
     providers: [
         provideNativeDateAdapter(),
@@ -37,5 +39,25 @@ export class FiltresComponent {
      * on n'utilise que les principaux aéroports français pour l'instant
      */
     aeroports: IAeroport[] = AEROPORTS;
+
+    selectedAirport!: IAeroport
+    startDate!: Date
+    endDate!: Date
+
+    get isDisabled() {
+        return !this.selectedAirport || !this.startDate || !this.endDate
+    }
+
+    @Output() emitter = new EventEmitter<IFilters>();
+
+    applyFilters = () => {
+        const filters = {
+            airport: this.selectedAirport,
+            startDate: this.startDate,
+            endDate: this.endDate
+        }
+
+        this.emitter.emit(filters)
+    }
 
 }
