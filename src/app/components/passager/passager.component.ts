@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
     selector: 'app-passager',
     imports: [],
     templateUrl: './passager.component.html',
-    styleUrls: ['./passager.component.scss']
 })
 export class PassagerComponent {
 

@@ -7,7 +7,6 @@ import { ListePassagersComponent } from '../liste-passagers/liste-passagers.comp
     selector: 'app-view-airfrance',
     imports: [FiltresComponent, ListeVolsComponent, ListePassagersComponent],
     templateUrl: './view-airfrance.component.html',
-    styleUrls: ['./view-airfrance.component.scss']
 })
 export class ViewAirFranceComponent {
 

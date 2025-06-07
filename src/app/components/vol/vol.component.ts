@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
     selector: 'app-vol',
     imports: [],
     templateUrl: './vol.component.html',
-    styleUrls: ['./vol.component.scss']
 })
 export class VolComponent {
 
