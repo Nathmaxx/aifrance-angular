@@ -17,7 +17,6 @@ export class VolService {
 	 */
 	getVolsDepart(code: string, debut: number, fin: number): Observable<Vol[]> {
 		const link = `https://opensky-network.org/api/flights/departure?airport=${code}&begin=${debut}&end=${fin}`
-		console.log(link)
 		return this.http.get<any>(link).pipe(
 			map((response) => response
 				.map((dto: IVolDto) => new Vol(dto))

@@ -8,7 +8,7 @@
 				<app-filtres (emitter)="receiveFilters($event)"></app-filtres>
 			</div>
 			<div>
-				<app-liste-vols></app-liste-vols>
+				<app-liste-vols [flights]="flights"></app-liste-vols>
 			</div>
 		</div>
 		<div>

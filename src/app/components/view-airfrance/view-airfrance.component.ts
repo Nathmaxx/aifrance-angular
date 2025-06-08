@@ -26,11 +26,11 @@ export class ViewAirFranceComponent {
             .subscribe({
                 next: (vols) => {
                     this.flights = vols
+                    console.log(this.flights)
                 },
                 error: (error) => {
                     console.error('Erreur lors de la récupération des vols :', error);
                 }
             });
-        console.log(this.flights)
     }
 }

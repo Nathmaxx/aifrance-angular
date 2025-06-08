@@ -1,1 +1,3 @@
-<!-- Affichage de la liste des vols -->
+<div *ngFor="let flight of flights" class="flex">
+    <app-vol [flight]="flight"></app-vol>
+</div>

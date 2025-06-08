@@ -1,1 +1,13 @@
-<!-- Affichage d'un vol -->
+<div class="flex">
+    <div>
+        <mat-icon>flight_takeoff</mat-icon>
+    </div>
+    <p>{{flight.icao}}</p>
+    <p>{{flight.matricule}}</p>
+    <p>{{flight.aeroportDepart}}</p>
+    <div>
+        <mat-icon>arrow_right_alt</mat-icon>
+    </div>
+    <p>{{flight.aeroportArrivee}}</p>
+    <img [src]="flight.companyImageLink" alt="">
+</div>
