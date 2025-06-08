@@ -1,4 +1,4 @@
-<div class="flex">
+<div class="grid grid-cols-7 h-12" (click)="selectFlight()">
     <div>
         <mat-icon>flight_takeoff</mat-icon>
     </div>
@@ -8,6 +8,6 @@
     <div>
         <mat-icon>arrow_right_alt</mat-icon>
     </div>
-    <p>{{flight.aeroportArrivee}}</p>
-    <img [src]="flight.companyImageLink" alt="">
+    <p>{{flight.aeroportArrivee || "Inconnu"}}</p>
+    <img [src]="flight.companyImageLink" [alt]="flight.compagnie" class="object-contain h-8 w-32">
 </div>

@@ -15,6 +15,8 @@ export class ViewAirFranceComponent {
     filters: IFilters | null = null
     flights: Vol[] | [] = []
 
+    selectedFlight!: Vol
+
     constructor(private flightService: VolService) { }
 
     receiveFilters(filters: IFilters) {
@@ -32,5 +34,10 @@ export class ViewAirFranceComponent {
                     console.error('Erreur lors de la récupération des vols :', error);
                 }
             });
+    }
+
+    receiveFlight(flight: Vol) {
+        this.selectedFlight = flight
+        console.log(this.selectedFlight)
     }
 }

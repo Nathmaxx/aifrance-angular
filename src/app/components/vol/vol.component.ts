@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Vol } from '../../models/vol.model';
 
@@ -10,5 +10,9 @@ import { Vol } from '../../models/vol.model';
 export class VolComponent {
     @Input() flight!: Vol
 
-    // companyImage: string = this.flight.getCompanyLink(this.flight.compagnie)
+    @Output() emitter = new EventEmitter<Vol>();
+
+    selectFlight() {
+        this.emitter.emit(this.flight)
+    }
 }
