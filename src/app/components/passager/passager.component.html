@@ -1,1 +1,9 @@
-<!-- Affichage d'un passager -->
+<div class="grid grid-cols-4">
+    <img [src]="passenger.image" [alt]="passenger.nom" class="h-12 w-12">
+    <p>{{passenger.nom}}</p>    
+    <p>{{passenger.classeVol}}</p>
+    <div class="flex">
+        <mat-icon>card_travel</mat-icon>
+        <p>&nbsp;x{{passenger.nbBagagesSoute}}</p>
+    </div>
+</div>

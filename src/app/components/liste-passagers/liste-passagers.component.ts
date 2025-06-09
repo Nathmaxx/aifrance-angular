@@ -4,10 +4,11 @@ import { VolComponent } from "../vol/vol.component";
 import { CommonModule } from '@angular/common';
 import { PassengerService } from '../../services/passengers.service';
 import { Passager } from '../../models/passager.model';
+import { PassagerComponent } from "../passager/passager.component";
 
 @Component({
     selector: 'app-liste-passagers',
-    imports: [VolComponent, CommonModule],
+    imports: [VolComponent, CommonModule, PassagerComponent],
     templateUrl: './liste-passagers.component.html',
 })
 export class ListePassagersComponent implements OnChanges {
@@ -26,6 +27,7 @@ export class ListePassagersComponent implements OnChanges {
                     .subscribe({
                         next: (passengers) => {
                             this.passengers = passengers
+                            console.log(this.passengers)
                         },
                         error: (error) => {
                             console.error('Erreur lors de la récupération des passagers :', error);
