@@ -1,5 +1,5 @@
 <div class="grid grid-cols-4">
-    <div class="flex">
+    <div class="flex mb-4">
         <mat-icon>flight_takeoff</mat-icon>
         <p class="ml-3">N° ICAO</p>
     </div>
@@ -11,4 +11,6 @@
     </div>
     <p>Compagnie</p>
 </div>
-<app-vol [flight]="flight" (emitter)="forwardFlight($event)" *ngFor="let flight of flights"></app-vol>
+<div class="flex flex-col gap-y-3">
+    <app-vol [flight]="flight" (emitter)="forwardFlight($event)" *ngFor="let flight of flights"></app-vol>
+</div>

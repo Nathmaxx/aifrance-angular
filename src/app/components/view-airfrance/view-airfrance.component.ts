@@ -5,6 +5,8 @@ import { ListePassagersComponent } from '../liste-passagers/liste-passagers.comp
 import { IFilters } from '../../models/filters.model';
 import { VolService } from '../../services/vol.service';
 import { Vol } from '../../models/vol.model';
+import { PassengerService } from '../../services/passengers.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-view-airfrance',
@@ -17,14 +19,21 @@ export class ViewAirFranceComponent {
 
     selectedFlight!: Vol
 
-    constructor(private flightService: VolService) { }
+    searchType: string = (this.activatedRoute.routeConfig && this.activatedRoute.routeConfig.path) || ""
+
+    constructor(
+        private flightService: VolService,
+        private activatedRoute: ActivatedRoute
+    ) {
+        this.searchType = (activatedRoute.routeConfig && activatedRoute.routeConfig.path) || ""
+    }
 
     receiveFilters(filters: IFilters) {
         const { airport, startDate, endDate } = filters
 
         const formattedStartDate = Math.floor(startDate.getTime() / 1000)
         const formattedEndDate = Math.floor(endDate.getTime() / 1000)
-        this.flightService.getVolsDepart(airport.icao, formattedStartDate, formattedEndDate)
+        this.flightService.getVols(airport.icao, formattedStartDate, formattedEndDate, this.translateSearchType())
             .subscribe({
                 next: (vols) => {
                     this.flights = vols
@@ -39,5 +48,15 @@ export class ViewAirFranceComponent {
     receiveFlight(flight: Vol) {
         this.selectedFlight = flight
         console.log(this.selectedFlight)
+    }
+
+    translateSearchType() {
+        if (this.searchType === "decollages") {
+            return "departure"
+        } else if (this.searchType === "atterrissages") {
+            return "arrival"
+        } else {
+            return "departure"
+        }
     }
 }

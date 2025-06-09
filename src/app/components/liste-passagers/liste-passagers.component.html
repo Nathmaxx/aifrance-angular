@@ -1,8 +1,19 @@
-<div *ngIf="flightIsValid">
+<div *ngIf="flightIsValid" class="">
     <h2>Informations du vol : </h2>
-    <div class="bg-green-200 flex items-center h-min">
-        <app-vol [flight]="flight" class=""></app-vol>
+    <div class="grid grid-cols-4">
+        <div class="flex">
+            <mat-icon>flight_takeoff</mat-icon>
+            <p class="ml-3">N° ICAO</p>
+        </div>
+        <p>Matricule</p>
+        <div class="flex">
+            <p>Départ&nbsp;</p>
+            <mat-icon>arrow_right_alt</mat-icon>
+            <p>&nbsp;Arrivée</p>
+        </div>
+        <p>Compagnie</p>
     </div>
+    <app-vol [flight]="flight" class=""></app-vol>
     <h2>Liste des passagers : </h2>
     <div class="flex flex-col gap-y-2">
         <app-passager [passenger]="passenger" *ngFor="let passenger of passengers"></app-passager>

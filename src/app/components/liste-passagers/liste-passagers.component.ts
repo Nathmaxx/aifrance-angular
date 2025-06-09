@@ -5,10 +5,12 @@ import { CommonModule } from '@angular/common';
 import { PassengerService } from '../../services/passengers.service';
 import { Passager } from '../../models/passager.model';
 import { PassagerComponent } from "../passager/passager.component";
+import { MatIcon } from '@angular/material/icon';
+
 
 @Component({
     selector: 'app-liste-passagers',
-    imports: [VolComponent, CommonModule, PassagerComponent],
+    imports: [VolComponent, CommonModule, PassagerComponent, MatIcon],
     templateUrl: './liste-passagers.component.html',
 })
 export class ListePassagersComponent implements OnChanges {
