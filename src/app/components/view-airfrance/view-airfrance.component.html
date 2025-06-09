@@ -1,17 +1,18 @@
-<div class="bg-amber-200 h-full flex flex-col">
+<div class="h-full flex flex-col">
 	<div class="mb-4">
 		<h1 class="text-2xl text-blue-950 font-semibold">{{searchType.toUpperCase()}}</h1>
 	</div>
-	<div class="flex w-full gap-x-10 h-[calc(100vh-150px)] bg-violet-200">
+	<div class="flex w-full gap-x-10 h-[calc(100vh-150px)]">
 		<div class="w-1/2 flex flex-col">
 			<div>
 				<app-filtres (emitter)="receiveFilters($event)"></app-filtres>
 			</div>
 			<div class="overflow-y-auto h-[calc(100vh)]">
-				<app-liste-vols [flights]="flights" (emitter)="receiveFlight($event)"></app-liste-vols>
+				<app-liste-vols [searchType]="searchType" [flights]="flights"
+					(emitter)="receiveFlight($event)"></app-liste-vols>
 			</div>
 		</div>
-		<div class="w-1/2 bg-green-200 flex flex-col">
+		<div class="w-1/2 flex flex-col">
 			<div class="overflow-y-auto h-[calc(100vh)]">
 				<app-liste-passagers [flight]="selectedFlight"></app-liste-passagers>
 			</div>

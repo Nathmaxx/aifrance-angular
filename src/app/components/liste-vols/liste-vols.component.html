@@ -1,6 +1,7 @@
 <div class="grid grid-cols-4">
     <div class="flex mb-4">
-        <mat-icon>flight_takeoff</mat-icon>
+        <mat-icon *ngIf="searchType === 'decollages'">flight_takeoff</mat-icon>
+        <mat-icon *ngIf="searchType === 'atterrissages'">flight_land</mat-icon>
         <p class="ml-3">N° ICAO</p>
     </div>
     <p>Matricule</p>

@@ -11,6 +11,7 @@ import { MatIcon } from '@angular/material/icon';
 })
 export class ListeVolsComponent {
     @Input() flights!: Vol[]
+    @Input() searchType!: string
 
     flight!: Vol
 

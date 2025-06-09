@@ -5,7 +5,6 @@ import { ListePassagersComponent } from '../liste-passagers/liste-passagers.comp
 import { IFilters } from '../../models/filters.model';
 import { VolService } from '../../services/vol.service';
 import { Vol } from '../../models/vol.model';
-import { PassengerService } from '../../services/passengers.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -24,9 +23,7 @@ export class ViewAirFranceComponent {
     constructor(
         private flightService: VolService,
         private activatedRoute: ActivatedRoute
-    ) {
-        this.searchType = (activatedRoute.routeConfig && activatedRoute.routeConfig.path) || ""
-    }
+    ) { }
 
     receiveFilters(filters: IFilters) {
         const { airport, startDate, endDate } = filters

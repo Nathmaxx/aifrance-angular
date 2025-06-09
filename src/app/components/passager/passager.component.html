@@ -1,7 +1,7 @@
 <div class="grid grid-cols-4 place-items-center">
     <img [src]="passenger.image" [alt]="passenger.nom" class="h-14 w-14">
-    <p>{{passenger.nom}}</p>    
-    <p>{{passenger.classeVol}}</p>
+    <p>{{passenger.nom}}</p>
+    <p [appClassColor]="passenger.classeVol">{{passenger.classeVol}}</p>
     <div class="flex">
         <mat-icon>card_travel</mat-icon>
         <p>&nbsp;x{{passenger.nbBagagesSoute}}</p>
