@@ -1,9 +1,9 @@
 <div class="grid grid-cols-4 place-items-center">
     <img [src]="passenger.image" [alt]="passenger.nom" class="h-14 w-14">
     <p>{{passenger.nom}}</p>
-    <p [appClassColor]="passenger.classeVol">{{passenger.classeVol}}</p>
-    <div class="flex">
+    <p [appClassColor]="passenger.classeVol" class="font-medium">{{passenger.classeVol}}</p>
+    <div class="flex" [appLuggages]="passenger.nbBagagesSoute" [flightClass]="passenger.classeVol">
         <mat-icon>card_travel</mat-icon>
-        <p>&nbsp;x{{passenger.nbBagagesSoute}}</p>
+        <p class="font-semibold">&nbsp;x{{passenger.nbBagagesSoute}}</p>
     </div>
 </div>
