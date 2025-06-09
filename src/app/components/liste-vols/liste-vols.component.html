@@ -1,3 +1,14 @@
-<div *ngFor="let flight of flights" class="flex">
-    <app-vol [flight]="flight" (emitter)="forwardFlight($event)"></app-vol>
+<div class="grid grid-cols-4">
+    <div class="flex">
+        <mat-icon>flight_takeoff</mat-icon>
+        <p class="ml-3">N° ICAO</p>
+    </div>
+    <p>Matricule</p>
+    <div class="flex">
+        <p>Départ&nbsp;</p>
+        <mat-icon>arrow_right_alt</mat-icon>
+        <p>&nbsp;Arrivée</p>
+    </div>
+    <p>Compagnie</p>
 </div>
+<app-vol [flight]="flight" (emitter)="forwardFlight($event)" *ngFor="let flight of flights"></app-vol>

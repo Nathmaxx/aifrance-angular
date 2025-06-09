@@ -1,13 +1,15 @@
-<div class="grid grid-cols-7 place-items-center" (click)="selectFlight()">
+<div class="grid grid-cols-4" (click)="selectFlight()">
     <div class="flex">
         <mat-icon>flight_takeoff</mat-icon>
+        <p class="ml-3">{{flight.icao}}</p>
     </div>
-    <p>{{flight.icao}}</p>
     <p>{{flight.matricule}}</p>
-    <p>{{flight.aeroportDepart}}</p>
-    <div>
-        <mat-icon>arrow_right_alt</mat-icon>
+    <div class="flex">
+        <p>{{flight.aeroportDepart}}&nbsp;</p>
+        <div>
+            <mat-icon>arrow_right_alt</mat-icon>
+        </div>
+        <p>&nbsp;{{flight.aeroportArrivee || "Inconnu"}}</p>
     </div>
-    <p>{{flight.aeroportArrivee || "Inconnu"}}</p>
     <img [src]="flight.companyImageLink" [alt]="flight.compagnie" class="object-contain h-8 w-32">
 </div>
