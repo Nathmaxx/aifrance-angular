@@ -6,11 +6,11 @@ import { PassengerService } from '../../services/passengers.service';
 import { Passager } from '../../models/passager.model';
 import { PassagerComponent } from "../passager/passager.component";
 import { MatIcon } from '@angular/material/icon';
-
+import { MatSlideToggle, MatSlideToggleChange } from '@angular/material/slide-toggle'
 
 @Component({
     selector: 'app-liste-passagers',
-    imports: [VolComponent, CommonModule, PassagerComponent, MatIcon],
+    imports: [VolComponent, CommonModule, PassagerComponent, MatIcon, MatSlideToggle],
     templateUrl: './liste-passagers.component.html',
 })
 export class ListePassagersComponent implements OnChanges {
@@ -18,6 +18,7 @@ export class ListePassagersComponent implements OnChanges {
     @Input() flight!: Vol
     flightIsValid: boolean = false;
     passengers!: Passager[]
+    showProfileImage: boolean = false
 
     constructor(private passengersService: PassengerService) { }
 
@@ -43,5 +44,8 @@ export class ListePassagersComponent implements OnChanges {
         return !!this.flight && Object.keys(this.flight).length > 0;
     }
 
+    onToggleChange(event: MatSlideToggleChange) {
+        this.showProfileImage = event.checked
+    }
 
 }

@@ -1,21 +1,32 @@
 <div *ngIf="flightIsValid" class="">
-    <h2>Informations du vol : </h2>
-    <div class="grid grid-cols-4">
-        <div class="flex">
-            <mat-icon>flight_takeoff</mat-icon>
-            <p class="ml-3">N° ICAO</p>
+    <div class="p-3 border border-blue-200 rounded-md">
+        <h2 class="text-xl font-semibold text-blue-950 pb-1 border-b mb-3 border-blue-200">Informations du vol</h2>
+        <div class="grid grid-cols-4 font-medium">
+            <p class="">N° ICAO</p>
+            <p>Matricule</p>
+            <div class="flex">
+                <p>Départ&nbsp;</p>
+                <mat-icon>arrow_right_alt</mat-icon>
+                <p>&nbsp;Arrivée</p>
+            </div>
+            <p>Compagnie</p>
         </div>
-        <p>Matricule</p>
-        <div class="flex">
-            <p>Départ&nbsp;</p>
-            <mat-icon>arrow_right_alt</mat-icon>
-            <p>&nbsp;Arrivée</p>
-        </div>
-        <p>Compagnie</p>
+        <app-vol [flight]="flight" class=""></app-vol>
     </div>
-    <app-vol [flight]="flight" class=""></app-vol>
-    <h2>Liste des passagers : </h2>
-    <div class="flex flex-col gap-y-2">
-        <app-passager [passenger]="passenger" *ngFor="let passenger of passengers"></app-passager>
+    <div class="p-3 border border-blue-200 rounded-md mt-3">
+        <h2 class="text-xl font-semibold text-blue-950 pb-1 border-b mb-3 border-blue-200">Liste des passagers</h2>
+        <div class="flex flex-col gap-y-2">
+            <div class="grid grid-cols-4 font-medium">
+                <p *ngIf="showProfileImage">Image</p>
+                <p>Nom</p>
+                <p>Classe</p>
+                <p>Baggages</p>
+            </div>
+            <mat-slide-toggle (change)="onToggleChange($event)" [checked]="showProfileImage" color="warn">
+                Afficher les photos de profil
+            </mat-slide-toggle>
+            <app-passager [showProfileImage]="showProfileImage" [passenger]="passenger"
+                *ngFor="let passenger of passengers"></app-passager>
+        </div>
     </div>
 </div>
