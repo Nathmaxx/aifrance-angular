@@ -1,6 +1,7 @@
 <div class="grid grid-cols-4" (click)="selectFlight()">
     <div class="flex">
-        <mat-icon>flight_takeoff</mat-icon>
+        <mat-icon *ngIf="searchType === 'decollages'">flight_takeoff</mat-icon>
+        <mat-icon *ngIf="searchType === 'atterrissages'">flight_land</mat-icon>
         <p class="ml-3">{{flight.icao}}</p>
     </div>
     <p>{{flight.matricule}}</p>

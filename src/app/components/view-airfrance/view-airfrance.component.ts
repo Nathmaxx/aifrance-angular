@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, SimpleChanges } from '@angular/core';
 import { FiltresComponent } from '../filtres/filtres.component';
 import { ListeVolsComponent } from '../liste-vols/liste-vols.component';
 import { ListePassagersComponent } from '../liste-passagers/liste-passagers.component';
@@ -54,6 +54,12 @@ export class ViewAirFranceComponent {
             return "arrival"
         } else {
             return "departure"
+        }
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes['searchType']) {
+            console.log('Nouvelle valeur :', changes['searchType'].currentValue);
         }
     }
 }
