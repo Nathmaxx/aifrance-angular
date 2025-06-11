@@ -16,6 +16,7 @@ import { MatSlideToggle, MatSlideToggleChange } from '@angular/material/slide-to
 export class ListePassagersComponent implements OnChanges {
 
     @Input() flight!: Vol
+    @Input() searchType!: string
     flightIsValid: boolean = false;
     passengers!: Passager[]
     showProfileImage: boolean = false

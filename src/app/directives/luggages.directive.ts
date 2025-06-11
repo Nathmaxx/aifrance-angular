@@ -21,12 +21,13 @@ export class LuggagesDirective implements OnInit {
 			isValid = false
 		} else if (this.flightClass.toLowerCase() === "business" && this.numberOfLuggages > 2) {
 			isValid = false
-		} else if (this.flightClass.toLowerCase() === "standard" && this.numberOfLuggages > 3) {
+		} else if (this.flightClass.toLowerCase() === "premium" && this.numberOfLuggages > 3) {
 			isValid = false
 		}
 
 		if (!isValid) {
-			this.el.nativeElement.style.backgroundColor = "red"
+			this.el.nativeElement.style.backgroundColor = "rgba(216,39,58,0.3)"
+			this.el.nativeElement.style.color = "rgba(216,39,58,1)"
 		}
 	}
 

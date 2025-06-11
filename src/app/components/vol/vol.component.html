@@ -1,16 +1,20 @@
-<div class="grid grid-cols-4" (click)="selectFlight()">
-    <div class="flex">
-        <mat-icon *ngIf="searchType === 'decollages'">flight_takeoff</mat-icon>
-        <mat-icon *ngIf="searchType === 'atterrissages'">flight_land</mat-icon>
-        <p class="ml-3">{{flight.icao}}</p>
-    </div>
-    <p>{{flight.matricule}}</p>
-    <div class="flex">
-        <p>{{flight.aeroportDepart}}&nbsp;</p>
-        <div>
-            <mat-icon>arrow_right_alt</mat-icon>
+<div class="grid grid-cols-4 p-2.5 border-b border-gray-100" (click)="selectFlight()">
+    <div class="flex items-center">
+        <div class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100">
+            <mat-icon class="text-green-600">{{searchType === 'decollages' ? "flight_takeoff" :
+                "flight_land"}}</mat-icon>
         </div>
-        <p>&nbsp;{{flight.aeroportArrivee || "Inconnu"}}</p>
+        <p class="ml-3 font-medium">{{flight.icao}}</p>
     </div>
-    <img [src]="flight.companyImageLink" [alt]="flight.compagnie" class="object-contain h-8 w-32">
+    <p class="text-gray-700">{{flight.matricule}}</p>
+    <div class="flex items-center">
+        <p class="text-gray-700">{{flight.aeroportDepart}}&nbsp;</p>
+        <div>
+            <mat-icon class="text-blue-500">arrow_right_alt</mat-icon>
+        </div>
+        <p class="text-gray-700">&nbsp;{{flight.aeroportArrivee || "Inconnu"}}</p>
+    </div>
+    <div>
+        <img [src]="flight.companyImageLink" [alt]="flight.compagnie" class="object-contain h-8 w-32">
+    </div>
 </div>

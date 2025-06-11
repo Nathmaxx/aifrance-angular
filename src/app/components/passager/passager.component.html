@@ -1,9 +1,18 @@
-<div class="grid grid-cols-4">
-    <img *ngIf="showProfileImage" [src]="passenger.image" [alt]="passenger.nom" class="h-14 w-14">
-    <p [matTooltip]="passenger.email">{{passenger.nom}}</p>
-    <p [appClassColor]="passenger.classeVol" class="font-medium">{{passenger.classeVol}}</p>
-    <div class="flex" [appLuggages]="passenger.nbBagagesSoute" [flightClass]="passenger.classeVol">
-        <mat-icon>card_travel</mat-icon>
-        <p class="font-semibold">&nbsp;x{{passenger.nbBagagesSoute}}</p>
+<div class="grid grid-cols-4 place-items-center p-3 border-b border-gray-100 hover:bg-gray-50">
+    <div class="flex justify-center w-full">
+        <img *ngIf="showProfileImage" [src]="passenger.image" [alt]="passenger.nom"
+            class="h-12 w-12 rounded-full object-cover border-gray-200">
+        <div *ngIf="!showProfileImage" class="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center">
+            <mat-icon class="text-gray-500">person</mat-icon>
+        </div>
+    </div>
+    <p [matTooltip]="passenger.email" class="cursor-help">{{passenger.nom}}</p>
+    <p [appClassColor]="passenger.classeVol" class="font-medium px-2.5 py-0.5 rounded-full">
+        {{passenger.classeVol}}
+    </p>
+    <div class="flex items-center px-2.5 py-0.5 rounded-full" [appLuggages]="passenger.nbBagagesSoute"
+        [flightClass]="passenger.classeVol">
+        <mat-icon class="text-gray-700">card_travel</mat-icon>
+        <p class="font-semibold ml-1">x{{passenger.nbBagagesSoute}}</p>
     </div>
 </div>

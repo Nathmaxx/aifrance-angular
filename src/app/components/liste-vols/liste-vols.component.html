@@ -1,18 +1,27 @@
-<div class="grid grid-cols-4">
-    <div class="flex mb-4">
-        <mat-icon *ngIf="searchType === 'decollages'">flight_takeoff</mat-icon>
-        <mat-icon *ngIf="searchType === 'atterrissages'">flight_land</mat-icon>
-        <p class="ml-3">N° ICAO</p>
+<div *ngIf="flights.length > 0" class="rounded-md p-4 mt-3 bg-white">
+    <div>
+        <h2 class="font-semibold text-xl text-blue-950 pb-2 border-b mb-4 border-blue-200 flex items-center">
+            <mat-icon class="mr-2 text-blue-800">travel_explore</mat-icon>
+            Résultats de la recherche
+        </h2>
+        <div class="grid grid-cols-4 font-medium text-blue-900 mb-2">
+            <div class="flex items-center">
+                <mat-icon *ngIf="searchType === 'decollages'" class="text-green-600">flight_takeoff</mat-icon>
+                <mat-icon *ngIf="searchType === 'atterrissages'" class="text-orange-600">flight_land</mat-icon>
+                <p class="ml-3">N° ICAO</p>
+            </div>
+            <p>Matricule</p>
+            <div class="flex items-center">
+                <p>Départ&nbsp;</p>
+                <mat-icon class="text-blue-500">arrow_right_alt</mat-icon>
+                <p>&nbsp;Arrivée</p>
+            </div>
+            <p>Compagnie</p>
+        </div>
     </div>
-    <p>Matricule</p>
-    <div class="flex">
-        <p>Départ&nbsp;</p>
-        <mat-icon>arrow_right_alt</mat-icon>
-        <p>&nbsp;Arrivée</p>
+    <div class="flex flex-col gap-y-3">
+        <app-vol [searchType]="searchType" [flight]="flight" (emitter)="forwardFlight($event)"
+            class="hover:bg-blue-50 rounded-md cursor-pointer transition-colors duration-300"
+            *ngFor="let flight of flights"></app-vol>
     </div>
-    <p>Compagnie</p>
-</div>
-<div class="flex flex-col gap-y-3">
-    <app-vol [searchType]="searchType" [flight]="flight" (emitter)="forwardFlight($event)"
-        *ngFor="let flight of flights"></app-vol>
 </div>

@@ -1,20 +1,25 @@
 <div class="h-full flex flex-col">
 	<div class="mb-4 mt-2">
-		<h1 class="text-2xl text-blue-950 font-semibold">{{searchType.toUpperCase()}}</h1>
+		<h1 class="text-2xl text-blue-950 font-semibold flex items-center">
+			<mat-icon class="mr-2 text-blue-800">
+				{{ searchType === 'decollages' ? 'flight_takeoff' : 'flight_land' }}
+			</mat-icon>
+			RECHERCHE - {{searchType.toUpperCase()}}
+		</h1>
 	</div>
 	<div class="flex w-full gap-x-10 h-[calc(100vh-150px)]">
-		<div class="w-1/2 flex flex-col">
+		<div class="w-1/2 flex flex-col bg-white rounded-lg shadow-sm p-4">
 			<div>
 				<app-filtres (emitter)="receiveFilters($event)"></app-filtres>
 			</div>
-			<div class="overflow-y-auto h-[calc(100vh)]">
+			<div class="overflow-y-auto h-[calc(100vh-250px)]">
 				<app-liste-vols [searchType]="searchType" [flights]="flights"
 					(emitter)="receiveFlight($event)"></app-liste-vols>
 			</div>
 		</div>
-		<div class="w-1/2 flex flex-col">
-			<div class="overflow-y-auto h-[calc(100vh)]">
-				<app-liste-passagers [flight]="selectedFlight"></app-liste-passagers>
+		<div class="w-1/2 flex flex-col bg-white rounded-lg shadow-sm p-4">
+			<div class="overflow-y-auto h-[calc(100vh-150px)]">
+				<app-liste-passagers [flight]="selectedFlight" [searchType]="searchType"></app-liste-passagers>
 			</div>
 		</div>
 	</div>

@@ -1,5 +1,5 @@
 <div *ngIf="flightIsValid" class="">
-    <div class="p-3 border border-blue-200 rounded-md">
+    <div class="p-3 rounded-md">
         <h2 class="text-xl font-semibold text-blue-950 pb-1 border-b mb-3 border-blue-200">Informations du vol</h2>
         <div class="grid grid-cols-4 font-medium">
             <p class="">N° ICAO</p>
@@ -11,20 +11,22 @@
             </div>
             <p>Compagnie</p>
         </div>
-        <app-vol [flight]="flight" class=""></app-vol>
+        <app-vol [flight]="flight" [searchType]="searchType" class=""></app-vol>
     </div>
-    <div class="p-3 border border-blue-200 rounded-md mt-3">
-        <h2 class="text-xl font-semibold text-blue-950 pb-1 border-b mb-3 border-blue-200">Liste des passagers</h2>
+    <div class="p-3 rounded-md mt-3">
+        <div class="flex pb-1 border-b mb-3 border-blue-200 justify-between">
+            <h2 class="text-xl font-semibold text-blue-950 ">Liste des passagers</h2>
+            <mat-slide-toggle (change)="onToggleChange($event)" [checked]="showProfileImage" color="warn">
+                Afficher les photos de profil
+            </mat-slide-toggle>
+        </div>
         <div class="flex flex-col gap-y-2">
-            <div class="grid grid-cols-4 font-medium">
-                <p *ngIf="showProfileImage">Image</p>
+            <div class="grid grid-cols-4 font-medium place-items-center">
+                <p>Image</p>
                 <p>Nom</p>
                 <p>Classe</p>
                 <p>Baggages</p>
             </div>
-            <mat-slide-toggle (change)="onToggleChange($event)" [checked]="showProfileImage" color="warn">
-                Afficher les photos de profil
-            </mat-slide-toggle>
             <app-passager [showProfileImage]="showProfileImage" [passenger]="passenger"
                 *ngFor="let passenger of passengers"></app-passager>
         </div>

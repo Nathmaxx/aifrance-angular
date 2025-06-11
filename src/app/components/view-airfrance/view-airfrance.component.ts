@@ -6,10 +6,11 @@ import { IFilters } from '../../models/filters.model';
 import { VolService } from '../../services/vol.service';
 import { Vol } from '../../models/vol.model';
 import { ActivatedRoute } from '@angular/router';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
     selector: 'app-view-airfrance',
-    imports: [FiltresComponent, ListeVolsComponent, ListePassagersComponent],
+    imports: [FiltresComponent, ListeVolsComponent, ListePassagersComponent, MatIcon],
     templateUrl: './view-airfrance.component.html',
 })
 export class ViewAirFranceComponent {
